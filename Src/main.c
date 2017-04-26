@@ -54,6 +54,9 @@ UART_HandleTypeDef huart2;
 
 osThreadId defaultTaskHandle;
 osThreadId commTaskHandle;
+osThreadId sensorTaskHandle;
+osThreadId controllerTaskHandle;
+osThreadId pwmTaskHandle;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
@@ -67,6 +70,9 @@ static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 void StartDefaultTask(void const * argument);
 extern void startCommTask(void const * argument);
+extern void startSensorTask(void const * argument);
+extern void startControllerTask(void const * argument);
+extern void startPwmTask(void const * argument);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
@@ -120,6 +126,18 @@ int main(void)
   /* definition and creation of commTask */
   osThreadDef(commTask, startCommTask, osPriorityNormal, 0, 1024);
   commTaskHandle = osThreadCreate(osThread(commTask), NULL);
+
+  /* definition and creation of sensorTask */
+  osThreadDef(sensorTask, startSensorTask, osPriorityNormal, 0, 1024);
+  sensorTaskHandle = osThreadCreate(osThread(sensorTask), NULL);
+
+  /* definition and creation of controllerTask */
+  osThreadDef(controllerTask, startControllerTask, osPriorityNormal, 0, 1024);
+  controllerTaskHandle = osThreadCreate(osThread(controllerTask), NULL);
+
+  /* definition and creation of pwmTask */
+  osThreadDef(pwmTask, startPwmTask, osPriorityNormal, 0, 128);
+  pwmTaskHandle = osThreadCreate(osThread(pwmTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */

@@ -2,7 +2,7 @@
 FREERTOS.FootprintOK=true
 FREERTOS.INCLUDE_vTaskDelayUntil=1
 FREERTOS.IPParameters=Tasks01,FootprintOK,INCLUDE_vTaskDelayUntil
-FREERTOS.Tasks01=defaultTask,0,128,StartDefaultTask,Default,NULL,Dynamic,NULL,NULL;commTask,0,1024,startCommTask,As external,NULL,Dynamic,NULL,NULL
+FREERTOS.Tasks01=defaultTask,0,128,StartDefaultTask,Default,NULL,Dynamic,NULL,NULL;commTask,0,1024,startCommTask,As external,NULL,Dynamic,NULL,NULL;sensorTask,0,1024,startSensorTask,As external,NULL,Dynamic,NULL,NULL;controllerTask,0,1024,startControllerTask,As external,NULL,Dynamic,NULL,NULL;pwmTask,0,128,startPwmTask,As external,NULL,Dynamic,NULL,NULL
 File.Version=6
 KeepUserPlacement=true
 Mcu.Family=STM32F4

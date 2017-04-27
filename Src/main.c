@@ -46,7 +46,7 @@
 #include "cmsis_os.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "sharedResources.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -103,7 +103,7 @@ int main(void)
   MX_USART2_UART_Init();
 
   /* USER CODE BEGIN 2 */
-
+  initializeResources();
   /* USER CODE END 2 */
 
   /* USER CODE BEGIN RTOS_MUTEX */
